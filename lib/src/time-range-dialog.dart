@@ -62,6 +62,7 @@ showTimeRangePicker({
 
   /// the color of the circle outline
   Color? backgroundColor,
+  Color? dialogBackgroundColor,
 
   /// a widget displayed in the background, use e.g. an image
   Widget? backgroundWidget,
@@ -129,7 +130,7 @@ showTimeRangePicker({
   final Widget dialog = Dialog(
       elevation: 12,
       clipBehavior: Clip.antiAlias,
-      backgroundColor: backgroundColor,
+      backgroundColor: dialogBackgroundColor,
       child: TimeRangePicker(
         start: start,
         end: end,

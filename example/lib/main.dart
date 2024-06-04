@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../lib/src/time-range-dialog.dart';
-import '../../lib/src/utils.dart';
+import 'package:time_range_picker/time_range_picker.dart';
 
 void main() {
   runApp(const MyApp());
