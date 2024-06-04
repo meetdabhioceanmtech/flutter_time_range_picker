@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:time_range_picker/time_range_picker.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../../lib/src/time-range-dialog.dart';
+import '../../lib/src/utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,8 +54,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   TimeOfDay _startTime = TimeOfDay.now();
-  TimeOfDay _endTime =
-      TimeOfDay.fromDateTime(DateTime.now().add(const Duration(hours: 3)));
+  TimeOfDay _endTime = TimeOfDay.fromDateTime(DateTime.now().add(const Duration(hours: 3)));
 
   @override
   Widget build(BuildContext context) {
@@ -102,34 +103,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ticks: 12,
               ticksColor: Colors.white,
               snap: true,
-              labels: [
-                "12 am",
-                "3 am",
-                "6 am",
-                "9 am",
-                "12 pm",
-                "3 pm",
-                "6 pm",
-                "9 pm"
-              ].asMap().entries.map((e) {
-                return ClockLabel.fromIndex(
-                    idx: e.key, length: 8, text: e.value);
+              labels: ["12 am", "3 am", "6 am", "9 am", "12 pm", "3 pm", "6 pm", "9 pm"].asMap().entries.map((e) {
+                return ClockLabel.fromIndex(idx: e.key, length: 8, text: e.value);
               }).toList(),
               labelOffset: -30,
-              labelStyle: const TextStyle(
-                  fontSize: 22,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold),
+              labelStyle: const TextStyle(fontSize: 22, color: Colors.grey, fontWeight: FontWeight.bold),
               timeTextStyle: TextStyle(
-                  color: Colors.orange[700],
-                  fontSize: 24,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold),
+                  color: Colors.orange[700], fontSize: 24, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
               activeTimeTextStyle: const TextStyle(
-                  color: Colors.orange,
-                  fontSize: 26,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold),
+                  color: Colors.orange, fontSize: 26, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
             );
           },
           child: const Text("Interval"),
@@ -141,26 +123,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 start: const TimeOfDay(hour: 9, minute: 0),
                 end: const TimeOfDay(hour: 12, minute: 0),
                 disabledTime: TimeRange(
-                    startTime: const TimeOfDay(hour: 22, minute: 0),
-                    endTime: const TimeOfDay(hour: 5, minute: 0)),
+                    startTime: const TimeOfDay(hour: 22, minute: 0), endTime: const TimeOfDay(hour: 5, minute: 0)),
                 disabledColor: Colors.red.withOpacity(0.5),
                 strokeWidth: 4,
                 ticks: 24,
                 ticksOffset: -7,
                 ticksLength: 15,
                 ticksColor: Colors.grey,
-                labels: [
-                  "12 am",
-                  "3 am",
-                  "6 am",
-                  "9 am",
-                  "12 pm",
-                  "3 pm",
-                  "6 pm",
-                  "9 pm"
-                ].asMap().entries.map((e) {
-                  return ClockLabel.fromIndex(
-                      idx: e.key, length: 8, text: e.value);
+                labels: ["12 am", "3 am", "6 am", "9 am", "12 pm", "3 pm", "6 pm", "9 pm"].asMap().entries.map((e) {
+                  return ClockLabel.fromIndex(idx: e.key, length: 8, text: e.value);
                 }).toList(),
                 labelOffset: 35,
                 rotateLabels: false,
@@ -179,11 +150,8 @@ class _MyHomePageState extends State<MyHomePage> {
               paintingStyle: PaintingStyle.fill,
               backgroundColor: Colors.grey.withOpacity(0.2),
               labels: [
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 7, minute: 0),
-                    text: "Start Work"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 18, minute: 0), text: "Go Home")
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 7, minute: 0), text: "Start Work"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 18, minute: 0), text: "Go Home")
               ],
               start: const TimeOfDay(hour: 10, minute: 0),
               end: const TimeOfDay(hour: 13, minute: 0),
@@ -193,8 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
               labelOffset: 15,
               padding: 60,
               disabledTime: TimeRange(
-                  startTime: const TimeOfDay(hour: 18, minute: 0),
-                  endTime: const TimeOfDay(hour: 7, minute: 0)),
+                  startTime: const TimeOfDay(hour: 18, minute: 0), endTime: const TimeOfDay(hour: 7, minute: 0)),
               disabledColor: Colors.red.withOpacity(0.5),
             );
 
@@ -219,26 +186,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 200,
               ),
               labels: [
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 6, minute: 0), text: "Get up"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 9, minute: 0),
-                    text: "Coffee time"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 15, minute: 0),
-                    text: "Afternoon"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 18, minute: 0),
-                    text: "Time for a beer"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 22, minute: 0),
-                    text: "Go to Sleep"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 2, minute: 0),
-                    text: "Go for a pee"),
-                ClockLabel.fromTime(
-                    time: const TimeOfDay(hour: 12, minute: 0),
-                    text: "Lunchtime!")
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 6, minute: 0), text: "Get up"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 9, minute: 0), text: "Coffee time"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 15, minute: 0), text: "Afternoon"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 18, minute: 0), text: "Time for a beer"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 22, minute: 0), text: "Go to Sleep"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 2, minute: 0), text: "Go for a pee"),
+                ClockLabel.fromTime(time: const TimeOfDay(hour: 12, minute: 0), text: "Lunchtime!")
               ],
               ticksColor: Colors.black,
               labelOffset: 40,
@@ -263,18 +217,8 @@ class _MyHomePageState extends State<MyHomePage> {
               handlerRadius: 8,
               ticksColor: Colors.grey,
               rotateLabels: false,
-              labels: [
-                "24 h",
-                "3 h",
-                "6 h",
-                "9 h",
-                "12 h",
-                "15 h",
-                "18 h",
-                "21 h"
-              ].asMap().entries.map((e) {
-                return ClockLabel.fromIndex(
-                    idx: e.key, length: 8, text: e.value);
+              labels: ["24 h", "3 h", "6 h", "9 h", "12 h", "15 h", "18 h", "21 h"].asMap().entries.map((e) {
+                return ClockLabel.fromIndex(idx: e.key, length: 8, text: e.value);
               }).toList(),
               labelOffset: 30,
               padding: 55,
@@ -282,8 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
               start: const TimeOfDay(hour: 12, minute: 0),
               end: const TimeOfDay(hour: 15, minute: 0),
               disabledTime: TimeRange(
-                  startTime: const TimeOfDay(hour: 6, minute: 0),
-                  endTime: const TimeOfDay(hour: 10, minute: 0)),
+                  startTime: const TimeOfDay(hour: 6, minute: 0), endTime: const TimeOfDay(hour: 10, minute: 0)),
               clockRotation: 180.0,
             );
 
@@ -301,18 +244,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ticks: 12,
               ticksColor: Colors.grey,
               ticksOffset: -12,
-              labels: [
-                "24 h",
-                "3 h",
-                "6 h",
-                "9 h",
-                "12 h",
-                "15 h",
-                "18 h",
-                "21 h"
-              ].asMap().entries.map((e) {
-                return ClockLabel.fromIndex(
-                    idx: e.key, length: 8, text: e.value);
+              labels: ["24 h", "3 h", "6 h", "9 h", "12 h", "15 h", "18 h", "21 h"].asMap().entries.map((e) {
+                return ClockLabel.fromIndex(idx: e.key, length: 8, text: e.value);
               }).toList(),
               labelOffset: -30,
               padding: 55,
@@ -339,18 +272,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ticks: 12,
               ticksColor: Colors.grey,
               ticksOffset: -12,
-              labels: [
-                "24 h",
-                "3 h",
-                "6 h",
-                "9 h",
-                "12 h",
-                "15 h",
-                "18 h",
-                "21 h"
-              ].asMap().entries.map((e) {
-                return ClockLabel.fromIndex(
-                    idx: e.key, length: 8, text: e.value);
+              labels: ["24 h", "3 h", "6 h", "9 h", "12 h", "15 h", "18 h", "21 h"].asMap().entries.map((e) {
+                return ClockLabel.fromIndex(idx: e.key, length: 8, text: e.value);
               }).toList(),
               labelOffset: -30,
               padding: 55,
@@ -370,8 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         ElevatedButton(
           onPressed: () async {
-            TimeRange? result = await showTimeRangePicker(
-                context: context, barrierDismissible: false);
+            TimeRange? result = await showTimeRangePicker(context: context, barrierDismissible: false);
 
             if (kDebugMode) {
               print("result $result");
@@ -403,11 +325,8 @@ class _MyHomePageState extends State<MyHomePage> {
             paintingStyle: PaintingStyle.fill,
             backgroundColor: Colors.grey.withOpacity(0.2),
             labels: [
-              ClockLabel.fromTime(
-                  time: const TimeOfDay(hour: 7, minute: 0),
-                  text: "Start Work"),
-              ClockLabel.fromTime(
-                  time: const TimeOfDay(hour: 18, minute: 0), text: "Go Home")
+              ClockLabel.fromTime(time: const TimeOfDay(hour: 7, minute: 0), text: "Start Work"),
+              ClockLabel.fromTime(time: const TimeOfDay(hour: 18, minute: 0), text: "Go Home")
             ],
             start: _startTime,
             end: _endTime,
@@ -464,8 +383,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     TextButton(
                       child: const Text('My custom ok'),
                       onPressed: () {
-                        Navigator.of(context).pop(
-                            TimeRange(startTime: startTime, endTime: endTime));
+                        Navigator.of(context).pop(TimeRange(startTime: startTime, endTime: endTime));
                       },
                     ),
                   ],
@@ -499,14 +417,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               handlerRadius: 8,
                               strokeWidth: 4,
                               ticks: 12,
-                              activeTimeTextStyle: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 22,
-                                  color: Colors.white),
-                              timeTextStyle: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 22,
-                                  color: Colors.white70),
+                              activeTimeTextStyle:
+                                  const TextStyle(fontWeight: FontWeight.normal, fontSize: 22, color: Colors.white),
+                              timeTextStyle:
+                                  const TextStyle(fontWeight: FontWeight.normal, fontSize: 22, color: Colors.white70),
                               onStartChange: (start) {
                                 setState(() {
                                   startTime = start;
